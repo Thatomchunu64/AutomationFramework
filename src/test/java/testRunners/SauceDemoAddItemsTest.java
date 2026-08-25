@@ -1,11 +1,9 @@
 package testRunners;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import utils.Base;
 
-public class SauceDemoLoginTest extends Base {
-
+public class SauceDemoAddItemsTest extends Base {
 
     @Test
     public void verifyLoginPageContent(){
@@ -22,9 +20,25 @@ public class SauceDemoLoginTest extends Base {
         loginPage.loginButtonClick();
     }
 
-    @Test
+    @Test(dependsOnMethods = "enterLoginCredentials" )
     public void verifyInventoryPageContent(){
         inventoryPage.verifyInventoryPage();
+
+    }
+
+    @Test(dependsOnMethods = "verifyInventoryPageContent" )
+    public void AddItems(){
+
+        inventoryPage.addProductToCart("bike");
+        inventoryPage.addProductToCart("backpack");
+        inventoryPage.addProductToCart("Jacket");
+
+    }
+
+    @Test(dependsOnMethods ="AddItems" )
+    public void viewCartItems() {
+
+        inventoryPage.clickCartIcon();
 
     }
 

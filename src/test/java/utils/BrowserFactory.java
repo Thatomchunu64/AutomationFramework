@@ -14,50 +14,58 @@ import java.time.Duration;
 
 public class BrowserFactory {
 
-    static WebDriver driver;
+    static WebDriver driverFactory;
 
 
-
-    static WebDriver launchBrowser(String browserName, String websiteUrl){
+    static WebDriver launchBrowser(String browserName, String websiteUrl) {
 
         if (browserName.equalsIgnoreCase("Chrome")) {
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--incognito");
+            options.addArguments("--disable-notifications");
 
-            driver = new ChromeDriver(options);
-            driver.manage().window().maximize();
-            driver.get(websiteUrl);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverFactory = new ChromeDriver(options);
+            driverFactory.manage().window().maximize();
+            driverFactory.get(websiteUrl);
+            driverFactory.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         } else if (browserName.equalsIgnoreCase("safari")) {
 
-            driver = new SafariDriver();
-            driver.manage().window().maximize();
-            driver.get(websiteUrl);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverFactory = new SafariDriver();
+            driverFactory.manage().window().maximize();
+            driverFactory.get(websiteUrl);
+            driverFactory.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         } else if (browserName.equalsIgnoreCase("firefox")) {
 
             FirefoxOptions fireOptions = new FirefoxOptions();
             fireOptions.addArguments("--incognito");
 
-            driver = new FirefoxDriver(fireOptions);
-            driver.manage().window().maximize();
-            driver.get(websiteUrl);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverFactory = new FirefoxDriver(fireOptions);
+            driverFactory.manage().window().maximize();
+            driverFactory.get(websiteUrl);
+            driverFactory.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        }else {
+        } else {
             EdgeOptions edgeOpt = new EdgeOptions();
             edgeOpt.addArguments("--incognito");
 
-            driver = new EdgeDriver(edgeOpt);
-            driver.manage().window().maximize();
-            driver.get(websiteUrl);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverFactory = new EdgeDriver(edgeOpt);
+            driverFactory.manage().window().maximize();
+            driverFactory.get(websiteUrl);
+            driverFactory.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
 
-        return driver;
+        return driverFactory;
+    }
+
+    public static void tearDownBrowser() {
+
+        if (driverFactory != null) {
+
+            driverFactory.quit();
+        }
     }
 
 }
