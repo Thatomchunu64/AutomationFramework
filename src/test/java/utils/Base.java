@@ -2,7 +2,8 @@ package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pages.InventoryPage;
 import pages.LoginPage;
 
@@ -15,7 +16,7 @@ public class Base {
     //public static final WebDriver driverBase = BrowserFactory.launchBrowser("chrome", "https://www.saucedemo.com/");
 
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
 
         driverBase = BrowserFactory.launchBrowser("chrome", "https://www.saucedemo.com/");
@@ -23,9 +24,11 @@ public class Base {
         inventoryPage = PageFactory.initElements(driverBase, InventoryPage.class);
     }
 
-    public void tearDown(){
+    @AfterMethod
+    public void tearDown() {
 
         BrowserFactory.tearDownBrowser();
+        System.out.println("TEST ENDED SUCCESSFULLY");
     }
 
 

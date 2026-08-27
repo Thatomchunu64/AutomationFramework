@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import testData.LoginCredentials;
 
 public class LoginPage {
 
@@ -27,60 +29,24 @@ public class LoginPage {
 
     public void verifyLoginCredentials(){
 
-        loginDriver.findElement(loginUsernameCredentials).isDisplayed();
-        loginDriver.findElement(loginPasswordCredential).isDisplayed();
-        System.out.println("Login credentials present & verified ");
+        Assert.assertTrue(loginDriver.findElement(loginUsernameCredentials).isDisplayed(),"cool");
+        Assert.assertTrue(loginDriver.findElement(loginPasswordCredential).isDisplayed(),"cool");
+        System.out.println("Login credentials present & verified ");//note redundancy
 
     }
 
-    public void standardUserLoginInput() throws InterruptedException {
+    public void inputLoginUsername(String username){
 
-        loginDriver.findElement(loginUsername).sendKeys("standard_user");
-        loginDriver.findElement(loginPassword).sendKeys("secret_sauce");
-        Thread.sleep(2000);
+        loginDriver.findElement(loginUsername).sendKeys(username);
 
     }
 
-    public void lockedOutUserLoginInput() throws InterruptedException {
+    public void inputLoginPassword(String password){
 
-        loginDriver.findElement(loginUsername).sendKeys("locked_out_user");
-        loginDriver.findElement(loginPassword).sendKeys("secret_sauce");
-        Thread.sleep(2000);
+        loginDriver.findElement(loginPassword).sendKeys(password);
 
     }
 
-    public void errorUserLoginInput() throws InterruptedException {
-
-        loginDriver.findElement(loginUsername).sendKeys("error_user");
-        loginDriver.findElement(loginPassword).sendKeys("secret_sauce");
-        Thread.sleep(2000);
-
-    }
-
-    public void problemUserLoginInput() throws InterruptedException {
-
-        loginDriver.findElement(loginUsername).sendKeys("problem_user");
-        loginDriver.findElement(loginPassword).sendKeys("secret_sauce");
-        Thread.sleep(2000);
-
-    }
-
-    public void performanceGlitchUserLoginInput() throws InterruptedException {
-
-        loginDriver.findElement(loginUsername).sendKeys("performance_glitch_user");
-        loginDriver.findElement(loginPassword).sendKeys("secret_sauce");
-        Thread.sleep(2000);
-
-    }
-
-    public void visualUserLoginInput() throws InterruptedException {
-
-
-        loginDriver.findElement(loginUsername).sendKeys("visual_user");
-        loginDriver.findElement(loginPassword).sendKeys("secret_sauce");
-        Thread.sleep(2000);
-
-    }
 
     public void loginButtonClick(){
 
