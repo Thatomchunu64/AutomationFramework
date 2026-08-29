@@ -1,6 +1,7 @@
 package testRunners;
 
 import org.testng.annotations.Test;
+import testData.LoginCredentials;
 import utils.Base;
 
 public class SauceDemoAddItemsTest extends Base {
@@ -16,9 +17,10 @@ public class SauceDemoAddItemsTest extends Base {
     @Test(dependsOnMethods = "verifyLoginPageContent")
     public void enterLoginCredentials () throws InterruptedException {
 
-
-        Thread.sleep(2000);
+        loginPage.inputLoginUsername(LoginCredentials.standardUsername);
+        loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
+        Thread.sleep(2000);
     }
 
     @Test(dependsOnMethods = "enterLoginCredentials" )

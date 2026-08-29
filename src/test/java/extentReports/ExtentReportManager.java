@@ -16,20 +16,21 @@ public class ExtentReportManager implements ITestListener {
     private static ExtentTest test; // Creates test cases in the report
 
 
+    @Override
     public void onStart(ITestContext context) {
 
         // UI of the reporter
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "Reports/ExecutionReport.xml");
-        sparkReporter.config().setDocumentTitle("Ndosi Automation");
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/Reports/Execution-Report.xml");
+        sparkReporter.config().setDocumentTitle("Sauce Demo Automation");
         sparkReporter.config().setReportName("Functional-Tests");
-        sparkReporter.config().setTheme(Theme.DARK);
+        sparkReporter.config().setTheme(Theme.STANDARD);
 
         extent= new ExtentReports();
         extent.attachReporter(sparkReporter);
-        extent.setSystemInfo("OS: ",System.getProperty("os.name"));
-        extent.setSystemInfo("Execution machine: ",System.getProperty("user.name"));
-        extent.setSystemInfo("Browser: ","Chrome");
-        extent.setSystemInfo("Test Environment: ","Staging");
+        extent.setSystemInfo("Operating System",System.getProperty("os.name"));
+        extent.setSystemInfo("Execution Machine",System.getProperty("user.name"));
+        extent.setSystemInfo("Browser","Chrome");
+        extent.setSystemInfo("Test Environment","Staging");
 
     }
 
