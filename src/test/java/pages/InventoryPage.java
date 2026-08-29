@@ -12,10 +12,10 @@ public class InventoryPage {
     By inventoryPageTitle = By.xpath("//span[contains(@class, 'title') and text()='Products']");
 
     By burgerMenu = By.id("react-burger-menu-btn");
-    By menuAllItems= By.id("inventory_sidebar_link");
+    By menuAllItems = By.id("inventory_sidebar_link");
     By menuAbout = By.id("about_sidebar_link");
     By menuLogout = By.id("logout_sidebar_link");
-    By menuResetState= By.id(("reset_sidebar_link"));
+    By menuResetState = By.id(("reset_sidebar_link"));
 
 
     By cartIcon = By.xpath("//div[contains(@id, 'shopping_cart_container')]/a[contains(@class, 'shopping_cart_link')]");
@@ -64,47 +64,47 @@ public class InventoryPage {
         driverInventory.findElement(product).click();
     }
 
-    public void sortItems(int sortOption){
+    public void sortItems(int sortOption) {
 
-        Select filterDropdown= new Select(driverInventory.findElement(filterSelect));
+        Select filterDropdown = new Select(driverInventory.findElement(filterSelect));
         filterDropdown.selectByIndex(sortOption);
     }
 
-    public void openBurgerMenu(){
+    public void openBurgerMenu() {
 
         driverInventory.findElement(burgerMenu).click();
 
     }
 
-    public void selectAllItems(){
+    public void selectAllItems() {
 
         openBurgerMenu();
         driverInventory.findElement(menuAllItems).click();
 
     }
 
-    public void selectAbout(){
+    public void selectAbout() {
 
         openBurgerMenu();
         driverInventory.findElement(menuAbout);
 
     }
 
-    public void selectLogOut(){
+    public void selectLogOut() {
 
         openBurgerMenu();
         driverInventory.findElement(menuLogout);
 
     }
 
-    public void resetAppState(){
+    public void resetAppState() {
 
         openBurgerMenu();
         driverInventory.findElement(menuResetState);
 
     }
 
-    public void clickCartIcon(){
+    public void clickCartIcon() {
 
         driverInventory.findElement(cartIcon).click();
     }

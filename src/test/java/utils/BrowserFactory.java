@@ -41,6 +41,7 @@ public class BrowserFactory {
 
             FirefoxOptions fireOptions = new FirefoxOptions();
             fireOptions.addArguments("--incognito");
+            fireOptions.addArguments("--disable-notifications");
 
             driverFactory = new FirefoxDriver(fireOptions);
             driverFactory.manage().window().maximize();
@@ -50,6 +51,7 @@ public class BrowserFactory {
         } else {
             EdgeOptions edgeOpt = new EdgeOptions();
             edgeOpt.addArguments("--incognito");
+            edgeOpt.addArguments("--disable-notifications");
 
             driverFactory = new EdgeDriver(edgeOpt);
             driverFactory.manage().window().maximize();

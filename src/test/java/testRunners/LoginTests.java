@@ -69,4 +69,13 @@ public class LoginTests extends Base {
         Thread.sleep(2000);
     }
 
+    @Test
+    public void invalidUserLogin() throws InterruptedException {
+
+        loginPage.inputLoginUsername(LoginCredentials.invalidUsername);
+        loginPage.inputLoginPassword(LoginCredentials.universalPassword);
+        loginPage.loginButtonClick();
+        Thread.sleep(2000);
+    }
+
 }

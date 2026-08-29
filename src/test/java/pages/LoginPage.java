@@ -16,49 +16,44 @@ public class LoginPage {
     By loginUsernameCredentials = By.xpath("//div[@class = 'login_credentials_wrap']/div/div[@id = 'login_credentials']");
     By loginPasswordCredential = By.xpath("//div[@class = 'login_credentials_wrap']/div/div[@class = 'login_password']");
 
-    public LoginPage(WebDriver drive){
+    public LoginPage(WebDriver drive) {
         this.loginDriver = drive;
     }
 
-    public void verifyLoginPage(){
+    public void verifyLoginPage() {
 
         loginDriver.findElement(loginPageValid).isDisplayed();
         System.out.println("Login page verified");
 
     }
 
-    public void verifyLoginCredentials(){
+    public void verifyLoginCredentials() {
 
-        Assert.assertTrue(loginDriver.findElement(loginUsernameCredentials).isDisplayed(),"cool");
-        Assert.assertTrue(loginDriver.findElement(loginPasswordCredential).isDisplayed(),"cool");
+        Assert.assertTrue(loginDriver.findElement(loginUsernameCredentials).isDisplayed(), "cool");
+        Assert.assertTrue(loginDriver.findElement(loginPasswordCredential).isDisplayed(), "cool");
         System.out.println("Login credentials present & verified ");//note redundancy
 
     }
 
-    public void inputLoginUsername(String username){
+    public void inputLoginUsername(String username) {
 
         loginDriver.findElement(loginUsername).sendKeys(username);
 
     }
 
-    public void inputLoginPassword(String password){
+    public void inputLoginPassword(String password) {
 
         loginDriver.findElement(loginPassword).sendKeys(password);
 
     }
 
 
-    public void loginButtonClick(){
+    public void loginButtonClick() {
 
         loginDriver.findElement(loginButton).click();
-        System.out.println("User logged in");
+
 
     }
-
-
-
-
-
 
 
 }

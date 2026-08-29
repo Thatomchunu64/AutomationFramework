@@ -9,6 +9,7 @@ public class LoginCredentials {
     public static String performanceGlitchUsername= "performance_glitch_user";
     public static String visualUsername ="visual_user";
     public static String lockedOutUsername= "locked_out_user";
+    public static String invalidUsername = "jimmy neutron";
 
 }
 
