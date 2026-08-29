@@ -9,7 +9,7 @@ public class InventoryPage {
 
     WebDriver driverInventory;
 
-    By inventoryPageTitle = By.xpath("//span[contains(@class, 'title') and text()='Production']");
+    By inventoryPageTitle = By.xpath("//span[contains(@class, 'title') and text()='Producti']");
 
     By burgerMenu = By.id("react-burger-menu-btn");
     By menuAllItems = By.id("inventory_sidebar_link");
