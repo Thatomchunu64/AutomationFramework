@@ -1,4 +1,4 @@
-name: Selenium Pipeline
+name: Selenium java Pipeline
 
 on:
   push:
