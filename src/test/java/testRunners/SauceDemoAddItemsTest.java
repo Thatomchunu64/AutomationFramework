@@ -7,45 +7,33 @@ import utils.Base;
 public class SauceDemoAddItemsTest extends Base {
 
     @Test
-    public void verifyLoginPageContent(){
+    public void verifyLoginPageContent() {
 
         loginPage.verifyLoginPage();
         loginPage.verifyLoginCredentials();
 
     }
 
-    @Test(dependsOnMethods = "verifyLoginPageContent")
-    public void enterLoginCredentials () throws InterruptedException {
+    @Test
+    public void verifyUserCanAddProductsToCart() throws InterruptedException {
 
+        // Login
         loginPage.inputLoginUsername(LoginCredentials.standardUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
-    }
 
-    @Test(dependsOnMethods = "enterLoginCredentials" )
-    public void verifyInventoryPageContent() throws InterruptedException {
+        // Verify inventory page
         inventoryPage.verifyInventoryPage();
-        Thread.sleep(2000);
 
-    }
-
-    @Test(dependsOnMethods = "verifyInventoryPageContent" )
-    public void AddItems() throws InterruptedException {
-
+        // Add products
         inventoryPage.addProductToCart("bike");
         inventoryPage.addProductToCart("backpack");
-        inventoryPage.addProductToCart("Jacket");
+        inventoryPage.addProductToCart("Jacket66");
 
-        Thread.sleep(2000);
-    }
-
-    @Test(dependsOnMethods ="AddItems" )
-    public void viewCartItems() throws InterruptedException {
-
+        // View cart
         inventoryPage.clickCartIcon();
-        Thread.sleep(2000);
 
+        Thread.sleep(2000);
     }
 
 

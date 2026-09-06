@@ -24,13 +24,7 @@
                 </methods>
             </class>
             <class name="testRunners.SauceDemoAddItemsTest">
-                <methods>
-                    <include name="verifyLoginPageContent"/>
-                    <include name="enterLoginCredentials"/>
-                    <include name="verifyInventoryPageContent"/>
-                    <include name="AddItems"/>
-                    <include name="viewCartItems"/>
-                </methods>
+
             </class>
         </classes>
     </test>

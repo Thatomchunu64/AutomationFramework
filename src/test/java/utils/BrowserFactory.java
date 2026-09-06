@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class BrowserFactory {
 
-    static WebDriver driverFactory;
+   public static WebDriver driverFactory;
 
 
     static WebDriver launchBrowser(String browserName, String websiteUrl) {

@@ -1,10 +1,17 @@
 package testRunners;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import testData.LoginCredentials;
+import testData.ReadFromDatabase;
 import utils.Base;
 
 public class LoginTests extends Base {
+
+    @BeforeClass
+    public void dbSetup(){
+        ReadFromDatabase.databaseConnect();
+    }
 
     @Test
     public void verifyLoginPageContent() throws InterruptedException {
@@ -18,8 +25,8 @@ public class LoginTests extends Base {
     @Test
     public void standardUserLogin() throws InterruptedException {
 
-        loginPage.inputLoginUsername(LoginCredentials.standardUsername);
-        loginPage.inputLoginPassword(LoginCredentials.universalPassword);
+        loginPage.inputLoginUsername(ReadFromDatabase.getUsername);
+        loginPage.inputLoginPassword(ReadFromDatabase.getPassword);
         loginPage.loginButtonClick();
         Thread.sleep(2000);
     }
