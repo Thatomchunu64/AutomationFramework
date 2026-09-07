@@ -13,7 +13,7 @@ public class Base {
     public static LoginPage loginPage;
     public static InventoryPage inventoryPage;
 
-    //public static final WebDriver driverBase = BrowserFactory.launchBrowser("chrome", "https://www.saucedemo.com/");
+    //public static final WebDriver driverBase = BrowserFactory.launchBrowser("chrome", "https://www.saucedemo.com/")
 
 
     @BeforeMethod

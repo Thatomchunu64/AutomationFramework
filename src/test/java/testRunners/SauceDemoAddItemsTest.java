@@ -21,7 +21,7 @@ public class SauceDemoAddItemsTest extends Base {
     }
 
     @Test
-    public void verifyUserCanAddProductsToCart() throws InterruptedException {
+    public void verifyUserCanAddProductsToCart() {
 
         // Login
         loginPage.inputLoginUsername(ReadFromDatabase.getUsername);
@@ -39,7 +39,7 @@ public class SauceDemoAddItemsTest extends Base {
         // View cart
         inventoryPage.clickCartIcon();
 
-        Thread.sleep(2000);
+
     }
 
 

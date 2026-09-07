@@ -15,7 +15,7 @@ import java.time.Duration;
 
 public class BrowserFactory {
 
-   public static WebDriver driverFactory;
+    public static WebDriver driverFactory;
 
 
     static WebDriver launchBrowser(String browserName, String websiteUrl) {
@@ -28,13 +28,9 @@ public class BrowserFactory {
             options.addArguments("--headless=new");
 
             driverFactory = new ChromeDriver(options);
-            //driverFactory.manage().window().maximize();
-            driverFactory.manage().window().setSize(new Dimension(1920,1080));
+            //driverFactory.manage().window().maximize()
+            driverFactory.manage().window().setSize(new Dimension(1920, 1080));
 
-            /* To maximize screen on headless:
-            driverFactory.manage().window().setSize(new Dimension(1920,1080));
-
-             */
 
             driverFactory.get(websiteUrl);
             driverFactory.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

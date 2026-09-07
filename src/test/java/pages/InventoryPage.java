@@ -16,18 +16,11 @@ public class InventoryPage {
     By menuAbout = By.id("about_sidebar_link");
     By menuLogout = By.id("logout_sidebar_link");
     By menuResetState = By.id(("reset_sidebar_link"));
-
-
     By cartIcon = By.xpath("//div[contains(@id, 'shopping_cart_container')]/a[contains(@class, 'shopping_cart_link')]");
-
     By filterSelect = By.xpath("//select[@class= 'product_sort_container']");
-
     By productCards = By.className("inventory_item");
-
     By productNames = By.className("inventory_item_name");
-
     By productPrices = By.className("inventory_item_price");
-
     By addToCartButtons = By.className("btn_inventory");
 
 

@@ -9,7 +9,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.Base;
-import utils.BrowserFactory;
 import utils.Screenshots;
 
 
@@ -28,44 +27,44 @@ public class ExtentReportManager implements ITestListener {
         sparkReporter.config().setReportName("Functional-Tests");
         sparkReporter.config().setTheme(Theme.STANDARD);
 
-        extent= new ExtentReports();
+        extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
-        extent.setSystemInfo("Operating System",System.getProperty("os.name"));
-        extent.setSystemInfo("Execution Machine",System.getProperty("user.name"));
-        extent.setSystemInfo("Browser","Chrome");
-        extent.setSystemInfo("Test Environment","Staging");
+        extent.setSystemInfo("Operating System", System.getProperty("os.name"));
+        extent.setSystemInfo("Execution Machine", System.getProperty("user.name"));
+        extent.setSystemInfo("Browser", "Chrome");
+        extent.setSystemInfo("Test Environment", "Staging");
 
     }
 
     @Override
-    public void onTestFailure(ITestResult result){
+    public void onTestFailure(ITestResult result) {
 
-        test= extent.createTest(result.getName());
-        test.log(Status.FAIL,"Test case "+ result.getMethod().getMethodName()+" has failed");
+        test = extent.createTest(result.getName());
+        test.log(Status.FAIL, "Test case " + result.getMethod().getMethodName() + " has failed");
         test.log(Status.FAIL, result.getThrowable()); // will get us some errors that caused test to fail
-        test.addScreenCaptureFromBase64String(Screenshots.getSnapshot(BrowserFactory.driverFactory), result.getName());
+        test.addScreenCaptureFromBase64String(Screenshots.getSnapshot(Base.driverBase), result.getName());
 
     }
 
     @Override
-    public void onTestSuccess(ITestResult result){
+    public void onTestSuccess(ITestResult result) {
 
-        test= extent.createTest(result.getName());
-        test.log(Status.PASS, "Test case "+ result.getMethod().getMethodName()+ " passed successfully");
+        test = extent.createTest(result.getName());
+        test.log(Status.PASS, "Test case " + result.getMethod().getMethodName() + " passed successfully");
 
-
-    }
-
-    @Override
-    public void onTestSkipped(ITestResult result){
-
-        test= extent.createTest(result.getName());
-        test.log(Status.SKIP, "Test case "+ result.getMethod().getMethodName());
 
     }
 
     @Override
-    public void onFinish(ITestContext context){
+    public void onTestSkipped(ITestResult result) {
+
+        test = extent.createTest(result.getName());
+        test.log(Status.SKIP, "Test case " + result.getMethod().getMethodName());
+
+    }
+
+    @Override
+    public void onFinish(ITestContext context) {
         extent.flush();
 
     }

@@ -1,7 +1,5 @@
 package testData;
 
-import org.testng.annotations.Test;
-
 import java.sql.*;
 
 public class ReadFromDatabase {

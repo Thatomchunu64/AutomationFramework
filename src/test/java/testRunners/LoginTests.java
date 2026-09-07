@@ -9,80 +9,79 @@ import utils.Base;
 public class LoginTests extends Base {
 
     @BeforeClass
-    public void dbSetup(){
+    public void dbSetup() {
         ReadFromDatabase.databaseConnect();
     }
 
     @Test
-    public void verifyLoginPageContent() throws InterruptedException {
+    public void verifyLoginPageContent() {
 
         loginPage.verifyLoginPage();
         loginPage.verifyLoginCredentials();
-        Thread.sleep(2000);
+
 
     }
 
     @Test
-    public void standardUserLogin() throws InterruptedException {
+    public void standardUserLogin() {
 
         loginPage.inputLoginUsername(ReadFromDatabase.getUsername);
         loginPage.inputLoginPassword(ReadFromDatabase.getPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
     }
 
     @Test
-    public void errorUserLogin() throws InterruptedException {
+    public void errorUserLogin() {
 
         loginPage.inputLoginUsername(LoginCredentials.errorUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
+
     }
 
     @Test
-    public void lockedOutUserLogin() throws InterruptedException {
+    public void lockedOutUserLogin() {
 
         loginPage.inputLoginUsername(LoginCredentials.lockedOutUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
+
     }
 
     @Test
-    public void performanceGlitchUserLogin() throws InterruptedException {
+    public void performanceGlitchUserLogin() {
 
         loginPage.inputLoginUsername(LoginCredentials.performanceGlitchUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
+
     }
 
     @Test
-    public void problemUserLogin() throws InterruptedException {
+    public void problemUserLogin() {
 
         loginPage.inputLoginUsername(LoginCredentials.problemUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
+
     }
 
     @Test
-    public void visualUserLogin() throws InterruptedException {
+    public void visualUserLogin() {
 
         loginPage.inputLoginUsername(LoginCredentials.visualUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
+
     }
 
     @Test
-    public void invalidUserLogin() throws InterruptedException {
+    public void invalidUserLogin() {
 
         loginPage.inputLoginUsername(LoginCredentials.invalidUsername);
         loginPage.inputLoginPassword(LoginCredentials.universalPassword);
         loginPage.loginButtonClick();
-        Thread.sleep(2000);
+
     }
 
 }
