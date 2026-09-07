@@ -1,10 +1,16 @@
 package testRunners;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import testData.LoginCredentials;
+import testData.ReadFromDatabase;
 import utils.Base;
 
 public class SauceDemoAddItemsTest extends Base {
+
+    @BeforeClass
+    public void dbSetup(){
+        ReadFromDatabase.databaseConnect();
+    }
 
     @Test
     public void verifyLoginPageContent() {
@@ -18,8 +24,8 @@ public class SauceDemoAddItemsTest extends Base {
     public void verifyUserCanAddProductsToCart() throws InterruptedException {
 
         // Login
-        loginPage.inputLoginUsername(LoginCredentials.standardUsername);
-        loginPage.inputLoginPassword(LoginCredentials.universalPassword);
+        loginPage.inputLoginUsername(ReadFromDatabase.getUsername);
+        loginPage.inputLoginPassword(ReadFromDatabase.getPassword);
         loginPage.loginButtonClick();
 
         // Verify inventory page
@@ -28,7 +34,7 @@ public class SauceDemoAddItemsTest extends Base {
         // Add products
         inventoryPage.addProductToCart("bike");
         inventoryPage.addProductToCart("backpack");
-        inventoryPage.addProductToCart("Jacket66");
+        inventoryPage.addProductToCart("Jacket");
 
         // View cart
         inventoryPage.clickCartIcon();

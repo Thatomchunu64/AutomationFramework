@@ -1,5 +1,6 @@
 package utils;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,9 +25,17 @@ public class BrowserFactory {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--incognito");
             options.addArguments("--disable-notifications");
+            options.addArguments("--headless=new");
 
             driverFactory = new ChromeDriver(options);
-            driverFactory.manage().window().maximize();
+            //driverFactory.manage().window().maximize();
+            driverFactory.manage().window().setSize(new Dimension(1920,1080));
+
+            /* To maximize screen on headless:
+            driverFactory.manage().window().setSize(new Dimension(1920,1080));
+
+             */
+
             driverFactory.get(websiteUrl);
             driverFactory.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
